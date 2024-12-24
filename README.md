@@ -1,50 +1,70 @@
-# React + TypeScript + Vite
+# AsterFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**AsterFlow** is a web-based graph-making tool designed to help users create, visualize, and share dynamic, interactive diagrams. Built with React, **AsterFlow** allows users to easily map out workflows, processes, and ideas with intuitive drag-and-drop functionality.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Drag-and-Drop Interface**: Quickly create and organize nodes and edges with a user-friendly, interactive design
+- **Customizable Styles**: Personalize node colors, shapes, and edge styles to enhance clarity and aesthetics
+- **Real-Time Collaboration**: Work together with others on the same graph in real-time
+- **Export Graphs**: Save and share your diagrams as PNG, SVG, or PDF files
+- **Interactive Components**: Add interactions to your nodes for more engaging diagrams
+- **Cloud Sync**: Sync your work to the cloud and access it across devices
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Before getting started, ensure you have the following installed:
+- Node.js (v14.x or later)
+- npm (Node Package Manager)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Installation Steps
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/asterflow.git
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. Navigate to the project directory:
+   ```bash
+   cd asterflow
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm start
+   ```
+
+The application will launch in your default web browser at `http://localhost:3000`.
+
+## Usage
+
+### Creating Your First Graph
+
+1. Start by clicking "New Graph" on the homepage
+2. Drag nodes from the toolbar onto the canvas
+3. Connect nodes by clicking on a source node and dragging to a target node
+4. Customize the appearance using the toolbar options
+5. Save your work or export as an image/PDF
+
+## Contributing
+
+We welcome contributions to AsterFlow! Here's how you can help:
+
+1. Fork the repository
+2. Create a new branch for your feature (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to your branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please make sure to update tests as appropriate and adhere to our coding guidelines.
+
+## License
+
+AsterFlow is licensed under the GNU General Public License (GPL). See the [LICENSE](LICENSE) file for more details.
