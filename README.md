@@ -11,6 +11,8 @@
 - **Interactive Components**: Add interactions to your nodes for more engaging diagrams
 - **Cloud Sync**: Sync your work to the cloud and access it across devices
 
+(This project is currently at the initial stage of development)
+
 ## Installation
 
 ### Prerequisites
