@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect, useRef, useContext } from 'react';
-import { Canvas } from 'fabric';
+import { Canvas as FabricCanvas } from 'fabric';
 
 type CanvasState = {
-    canvas: Canvas | null;
-    canvasRef: React.RefObject<HTMLCanvasElement>;
+    fabricCanvas: FabricCanvas | null;
+    canvasElementRef: React.RefObject<HTMLCanvasElement>;
     canvasElement: JSX.Element;
 };
 
@@ -14,17 +14,17 @@ type CanvasProviderProps = {
 const CanvasProviderContext = createContext<CanvasState | null>(null);
 
 export function CanvasProvider({ children }: CanvasProviderProps) {
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const [canvas, setCanvas] = useState<Canvas | null>(null);
+    const canvasElementRef = useRef<HTMLCanvasElement | null>(null);
+    const [fabricCanvas, setFabricCanvas] = useState<FabricCanvas | null>(null);
 
     useEffect(() => {
-        if (canvasRef.current) {
-            const newCanvas = new Canvas(canvasRef.current, {
+        if (canvasElementRef.current) {
+            const newCanvas = new FabricCanvas(canvasElementRef.current, {
                 height: 500,
                 width: 500,
             });
             newCanvas.backgroundColor = '#fff';
-            setCanvas(newCanvas);
+            setFabricCanvas(newCanvas);
 
             return () => {
                 newCanvas.dispose();
@@ -32,10 +32,10 @@ export function CanvasProvider({ children }: CanvasProviderProps) {
         }
     }, []);
 
-    const canvasElement = <canvas ref={canvasRef}></canvas>;
+    const canvasElement = <canvas ref={canvasElementRef}></canvas>;
 
     return (
-        <CanvasProviderContext.Provider value={{ canvas, canvasRef, canvasElement }}>
+        <CanvasProviderContext.Provider value={{ fabricCanvas, canvasElementRef, canvasElement }}>
             {children}
         </CanvasProviderContext.Provider>
     );

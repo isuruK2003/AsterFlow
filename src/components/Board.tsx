@@ -1,14 +1,14 @@
-import { useCanvas } from './CanvasProvider';
+import { useCanvas } from '@/canvas/CanvasProvider';
 import { useEffect } from 'react';
 
 function Board({ className }: { className?: string }) {
-    const { canvas, canvasElement, canvasRef } = useCanvas();
+    const { fabricCanvas, canvasElementRef, canvasElement } = useCanvas();
 
     useEffect(() => {
-        if (canvas) {
-            canvas.renderAll();
+        if (fabricCanvas) {
+            fabricCanvas.renderAll();
         }
-    }, [canvasRef]);
+    }, [canvasElementRef]);
 
     return (
         <div className={className}>

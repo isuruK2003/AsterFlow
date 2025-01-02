@@ -1,5 +1,5 @@
-import './css/Toolbar.css';
-import { ModeToggle } from './components/mode-toggle';
+import '@/css/Toolbar.css';
+import { ModeToggle } from './ModeToggle';
 import {
     Menubar,
     MenubarContent,
@@ -11,9 +11,9 @@ import {
 
 import Container from './Container';
 
-function Toolbar({ className, fileName }: { className?: string, fileName: string }) {
+function Toolbar({ className, fileName }: { className?: string; fileName: string }) {
     return (
-        <Menubar className={className} style={styles}>
+        <Menubar className={`${className} flex flex-row justify-between`} style={styles}>
             <Container className="flex flex-row">
                 <MenubarMenu>
                     <MenubarTrigger>File</MenubarTrigger>
@@ -41,15 +41,15 @@ function Toolbar({ className, fileName }: { className?: string, fileName: string
                     </MenubarContent>
                 </MenubarMenu>
             </Container>
-            <Container>{ fileName }</Container>
-            <ModeToggle></ModeToggle>
+            <Container>{fileName}</Container>
+            <ModeToggle />
         </Menubar>
     );
 }
 
 const styles = {
     borderRadius: '0px',
-    border: 'none'
+    border: 'none',
 };
 
 export default Toolbar;
