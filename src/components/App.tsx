@@ -1,27 +1,38 @@
+import { AppSidebar } from "./AppSidebar"
+import { Separator } from "@/components/ui/separator"
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar"
+import Board from "./Board"
+import { CanvasProvider } from "@/canvas/CanvasProvider"
+import { ThemeProvider } from "./ThemeProvider"
 import '@/css/App.css'
-import Toolbar from './Toolbar';
-import Board from './Board';
-import Menu from './Menu';
-import Container from './Container';
-import { ThemeProvider } from "@/components/ThemeProvider"
-import { CanvasProvider } from '@/canvas/CanvasProvider';
+import Toolbar from "./Toolbar"
 
-function App() {
+export default function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider>
       <CanvasProvider>
-        <Container className="flex flex-col h-screen">
-          <Toolbar fileName='Untitled Graph' />
-          <Container className="flex flex-row w-screen h-full">
-            <Menu className="w-[300px] bg-slate-800 bg-opacity-40"></Menu>
-            <Container className="w-full flex justify-center items-center bg-slate-800 bg-opacity-80">
-              <Board />
-            </Container>
-          </Container>
-        </Container>
+        <SidebarProvider>
+          <AppSidebar />
+          <SidebarInset>
+            <header className="w-full p-4 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+              <div className="flex items-center gap-2 px-4">
+                <SidebarTrigger className="-ml-1" />
+                <Separator orientation="vertical" className="mr-2 h-4" />
+                <div className="w-full">
+                  <Toolbar fileName="untitled"></Toolbar>
+                </div>
+              </div>
+            </header>
+              <div className="w-full flex justify-center items-center h-full">
+                <Board />
+              </div>
+          </SidebarInset>
+        </SidebarProvider>
       </CanvasProvider>
     </ThemeProvider>
   )
 }
-
-export default App;
