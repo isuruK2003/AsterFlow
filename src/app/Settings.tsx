@@ -103,7 +103,7 @@ export default function Settings({ canvas }: settingsProps) {
     };
 
     return (
-        <div>
+        <>
             {selectedObject && (
                 <>
                     {width && (<>
@@ -126,6 +126,6 @@ export default function Settings({ canvas }: settingsProps) {
                     <input value={radius} onChange={handleRadiusChange} />
                 </>
             )}
-        </div>
+        </>
     );
 }

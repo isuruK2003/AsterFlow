@@ -1,7 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
-import { Canvas, Rect, Circle } from 'fabric';
-import Settings from './Settings';
-import './styles/App.css'
+import { useEffect, useRef, useState } from "react";
+import { Canvas, Rect, Circle } from "fabric";
+import Settings from "./Settings";
+
+import { icons } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import MenuBar from "./MenuBar";
+import { Sidebar } from "./SideBar";
+import { ModeToggle } from "@/components/mode-toggle";
+
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -11,7 +23,7 @@ export default function App() {
     if (canvasRef.current) {
       const initCanvas = new Canvas(canvasRef.current, {
         width: 500,
-        height: 500
+        height: 500,
       });
 
       initCanvas.backgroundColor = "#fff";
@@ -21,9 +33,9 @@ export default function App() {
 
       return () => {
         initCanvas.dispose();
-      }
+      };
     }
-  }, [])
+  }, [canvasRef]);
 
   const addRectangle = () => {
     if (canvas) {
@@ -52,14 +64,52 @@ export default function App() {
     }
   };
 
+  const menuItems = [
+    {
+      label: "Shapes",
+      content: (
+        <div className="flex flex-col gap-2">
+          <Button variant="outline" onClick={addRectangle}>
+            <icons.Square className="mr-2" /> Rectangle
+          </Button>
+          <Button variant="outline" onClick={addCircle}>
+            <icons.Circle className="mr-2" /> Circle
+          </Button>
+        </div>
+      ),
+    },
+    {
+      label: "Settings",
+      content: <Settings canvas={canvas} />,
+    },
+  ];
+
   return (
-    <div className='app'>
-      <div className='shapes'>
-        <button onClick={addRectangle}>Rectangle</button>
-        <button onClick={addCircle}>Circle</button>
-      </div>
-      <canvas ref={canvasRef}/>
-      <Settings canvas={canvas}/>
+    <div className="app bg-zinc-900 h-screen flex flex-col">
+      <SidebarProvider>
+        <Sidebar
+          header={<div className="p-4 text-lg font-bold">Header</div>}
+          menuItems={menuItems}
+          footer={<div>Footer</div>}
+        />
+        <SidebarInset>
+          <header className="flex h-16 items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="h-4" />
+            <div className="w-full">
+              <MenuBar />
+            </div>
+            <ModeToggle />
+          </header>
+          <div className="flex-1 flex flex-col gap-4 p-4">
+            <div className="flex flex-row gap-4 h-full">
+              <div className="flex-1 bg-gray-100 rounded-lg">
+                <canvas ref={canvasRef} />
+              </div>
+            </div>
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
-  )
+  );
 }
