@@ -5,7 +5,7 @@ interface settingsProps {
     canvas: Canvas | null
 }
 
-export default function Settings({ canvas } : settingsProps) {
+export default function Settings({ canvas }: settingsProps) {
     const [selectedObject, setSelectedObject] = useState<FabricObject | null>(null);
     const [width, setWidth] = useState<number | null>(0);
     const [height, setHeight] = useState<number | null>(0);
@@ -14,7 +14,7 @@ export default function Settings({ canvas } : settingsProps) {
 
     useEffect(() => {
         if (canvas) {
-            
+
             canvas.on("selection:created", (event) => {
                 handleObjectSelection(event.selected[0]);
             });
@@ -42,11 +42,11 @@ export default function Settings({ canvas } : settingsProps) {
         if (!object) return;
 
         setSelectedObject(object);
-        
+
         setWidth(Math.round(object.width * object.scaleX));
         setHeight(Math.round(object.height * object.scaleY));
         setFill(object.fill);
-        
+
         if (object instanceof Circle) {
             setRadius(Math.round(object.radius))
         }
@@ -66,7 +66,7 @@ export default function Settings({ canvas } : settingsProps) {
         if (canvas === null || intValue < 0 || selectedObject === null) return;
 
         setWidth(intValue);
-        selectedObject.set({width: intValue / selectedObject.scaleX})
+        selectedObject.set({ width: intValue / selectedObject.scaleX })
         canvas.renderAll();
     };
 
@@ -77,7 +77,7 @@ export default function Settings({ canvas } : settingsProps) {
         if (canvas === null || intValue < 0 || selectedObject === null) return;
 
         setHeight(intValue);
-        selectedObject.set({height: intValue / selectedObject.scaleY})
+        selectedObject.set({ height: intValue / selectedObject.scaleY })
         canvas.renderAll();
     };
 
@@ -88,7 +88,7 @@ export default function Settings({ canvas } : settingsProps) {
         if (canvas === null || intValue < 0 || selectedObject === null || !(selectedObject instanceof Circle)) return;
 
         setRadius(intValue);
-        selectedObject.set({height: intValue / selectedObject.scaleX})
+        selectedObject.set({ height: intValue / selectedObject.scaleX })
         canvas.renderAll();
     };
 
@@ -98,7 +98,7 @@ export default function Settings({ canvas } : settingsProps) {
         if (canvas === null || selectedObject === null) return;
 
         setFill(value);
-        selectedObject.set({fill : value})
+        selectedObject.set({ fill: value })
         canvas.renderAll();
     };
 
@@ -106,20 +106,24 @@ export default function Settings({ canvas } : settingsProps) {
         <div>
             {selectedObject && (
                 <>
-                    <label>Width</label>
-                    <input onChange={handleWidthChange}/>
+                    {width && (<>
+                        <label>Width</label>
+                        <input value={width} onChange={handleWidthChange} />
+                    </>)}
 
-                    <label>Height</label>
-                    <input onChange={handleHeightChange}/>
+                    {height && (<>
+                        <label>Height</label>
+                        <input value={height} onChange={handleHeightChange} />
+                    </>)}
 
                     <label>Fill</label>
-                    <input onChange={handleFillChange}/>
+                    <input type="color" value={fill ? fill.toString() : "null"} onChange={handleFillChange} />
                 </>
             )}
-            {selectedObject && selectedObject instanceof Circle && (
+            {selectedObject && selectedObject instanceof Circle && radius && (
                 <>
                     <label>Radius</label>
-                    <input onChange={handleRadiusChange}/>
+                    <input value={radius} onChange={handleRadiusChange} />
                 </>
             )}
         </div>
