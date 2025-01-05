@@ -102,12 +102,10 @@ export default function App() {
               <MenuBar className="w-full" />
             <ModeToggle />
           </header>
-
-          <div className="flex-1 flex flex-col gap-4 p-4">
-            <div className="flex flex-row gap-4 h-full">
-              <div className="flex-1 bg-gray-100 rounded-lg">
-                <canvas ref={canvasRef} />
-              </div>
+          
+          <div className="w-full h-full p-4">
+            <div className="w-full h-full flex items-center justify-center rounded-lg bg-zinc-950 bg-opacity-10">
+              <canvas className="rounded-lg" ref={canvasRef} />
             </div>
           </div>
 

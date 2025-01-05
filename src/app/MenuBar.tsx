@@ -40,8 +40,14 @@ const menuBar: MenuGroup[] = [
                 { itemName: "Save", callback: sampleFunction, shortcut: "Ctrl+S" },
             ],
             [
+                { itemName: "Share", callback: sampleFunction },
                 { itemName: "Export", callback: sampleFunction },
                 { itemName: "Print", callback: sampleFunction },
+            ],
+            [
+                { itemName: "Rename", callback: sampleFunction },
+                { itemName: "Properties", callback: sampleFunction },
+                { itemName: "Page Setup", callback: sampleFunction },
             ],
             [{ itemName: "Close", callback: sampleFunction, shortcut: "Ctrl+W" }],
         ],
@@ -57,7 +63,13 @@ const menuBar: MenuGroup[] = [
     },
     {
         trigger: "Help",
-        content: [],
+        content: [
+            [
+                { itemName: "Shortcuts", callback: sampleFunction },
+                { itemName: "Quick Start Guide", callback: sampleFunction },
+                { itemName: "Documentation", callback: sampleFunction, shortcut: "Ctrl+H" },
+            ]
+        ],
     },
 ];
 
@@ -113,6 +125,6 @@ export default function MenuBar({ className }: { className?: string }) {
                     {menu.content.length > 0 && renderMenuContent(menu.content)}
                 </MenubarMenu>
             ))}
-        </ShadMenuBar>            
+        </ShadMenuBar>
     );
 }
