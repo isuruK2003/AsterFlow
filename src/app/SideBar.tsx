@@ -9,6 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarGroupContent,
 } from "@/components/ui/sidebar"
 import {
   Collapsible,
@@ -25,35 +26,38 @@ export function Sidebar({
     ...props
   }: {
     header: React.ReactNode;
-    menuItems: { label: string; content: React.ReactNode }[];
+    menuItems: { title: string; content: React.ReactNode[] }[];
     footer: React.ReactNode;
     defaultOpen?: boolean;
   } & React.ComponentProps<typeof ShadSidebar>) {
     return (
-      <ShadSidebar collapsible="icon" {...props}>
-        {header && <SidebarHeader>{header}</SidebarHeader>}
+      <ShadSidebar collapsible="offcanvas" {...props}>
+        {header && <SidebarHeader>{ header }</SidebarHeader>}
         <SidebarContent>
-          {menuItems.map((menuItem, index) => (
-            <SidebarGroup key={index}>
-              <SidebarMenu>
-                <Collapsible
-                  key={menuItem.label}
-                  asChild
-                  defaultOpen={defaultOpen}
-                  className="group/collapsible"
-                >
-                  <SidebarMenuItem>
-                    <CollapsibleTrigger asChild>
-                      <SidebarMenuButton tooltip={menuItem.label}>
-                        <SidebarGroupLabel>{menuItem.label}</SidebarGroupLabel>
-                        <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                      </SidebarMenuButton>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>{menuItem.content}</CollapsibleContent>
-                  </SidebarMenuItem>
-                </Collapsible>
-              </SidebarMenu>
-            </SidebarGroup>
+          {menuItems.map((item) => (
+            <Collapsible key={item.title} title={item.title} defaultOpen className="group/collapsible">
+              <SidebarGroup>
+                
+                <SidebarGroupLabel asChild className="group/label text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
+                  <CollapsibleTrigger>
+                    {item.title}{" "}<ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                  </CollapsibleTrigger>
+                </SidebarGroupLabel>
+
+                <CollapsibleContent>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      {item.content.map((contentItem) => (
+                        <SidebarMenuItem key={item.title}>
+                          { contentItem }
+                        </SidebarMenuItem>
+                      ))}
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </CollapsibleContent>
+
+              </SidebarGroup>
+            </Collapsible>
           ))}
         </SidebarContent>
         {footer && <SidebarFooter>{footer}</SidebarFooter>}

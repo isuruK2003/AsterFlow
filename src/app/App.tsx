@@ -4,8 +4,8 @@ import Settings from "./Settings";
 
 import { icons } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import MenuBar from "./MenuBar";
-import { Sidebar } from "./SideBar";
+import Menubar from "./Menubar";
+import { Sidebar } from "./Sidebar";
 import { ModeToggle } from "@/components/mode-toggle";
 
 import {
@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AvatarBar } from "./AvatarBar";
+import FileCard from "./FileCard";
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -67,8 +69,8 @@ export default function App() {
 
   const menuItems = [
     {
-      label: "Shapes",
-      content: (
+      title: "Shapes",
+      content: [(
         <div className="flex flex-col gap-2">
           <Button variant="outline" onClick={addRectangle}>
             <icons.Square className="mr-2" /> Rectangle
@@ -77,29 +79,43 @@ export default function App() {
             <icons.Circle className="mr-2" /> Circle
           </Button>
         </div>
-      ),
+      )],
     },
     {
-      label: "Settings",
-      content: <Settings canvas={canvas} />,
+      title: "Settings",
+      content: [<Settings canvas={canvas} />],
     },
   ];
+
+  const sidebarHeader = (
+    <FileCard />
+  );
+
+  const sidebarFooter = (
+    <AvatarBar
+      user={{
+        name: "Isuru",
+        email: "m@example.com",
+        avatar: "/avatars/shadcn.jpg",
+      }}
+    />
+  );
 
   return (
     <div className="app bg-zinc-900 h-screen flex flex-col">
       <ThemeProvider>
       <SidebarProvider>
         <Sidebar
-          header={<div className="p-4 text-lg font-bold">Header</div>}
+          header={sidebarHeader}
           menuItems={menuItems}
-          footer={<div>Footer</div>}
+          footer={sidebarFooter}
         />
         <SidebarInset>
-          
+
           <header className="flex h-16 items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="h-4" />
-              <MenuBar className="w-full" />
+              <Menubar className="w-full" />
             <ModeToggle />
           </header>
           
