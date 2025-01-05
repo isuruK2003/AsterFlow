@@ -14,6 +14,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -86,6 +87,7 @@ export default function App() {
 
   return (
     <div className="app bg-zinc-900 h-screen flex flex-col">
+      <ThemeProvider>
       <SidebarProvider>
         <Sidebar
           header={<div className="p-4 text-lg font-bold">Header</div>}
@@ -93,14 +95,14 @@ export default function App() {
           footer={<div>Footer</div>}
         />
         <SidebarInset>
+          
           <header className="flex h-16 items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="h-4" />
-            <div className="w-full">
-              <MenuBar />
-            </div>
+              <MenuBar className="w-full" />
             <ModeToggle />
           </header>
+
           <div className="flex-1 flex flex-col gap-4 p-4">
             <div className="flex flex-row gap-4 h-full">
               <div className="flex-1 bg-gray-100 rounded-lg">
@@ -108,8 +110,10 @@ export default function App() {
               </div>
             </div>
           </div>
+
         </SidebarInset>
       </SidebarProvider>
+      </ThemeProvider>
     </div>
   );
 }

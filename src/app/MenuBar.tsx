@@ -52,22 +52,7 @@ const menuBar: MenuGroup[] = [
             [
                 { itemName: "Undo", callback: sampleFunction, shortcut: "Ctrl+Z" },
                 { itemName: "Redo", callback: sampleFunction, shortcut: "Ctrl+Y" },
-            ],
-            [
-                {
-                    itemName: "Preferences",
-                    content: [
-                        {
-                            itemName: "Theme",
-                            content: [
-                                { itemName: "Light", callback: sampleFunction },
-                                { itemName: "Dark", callback: sampleFunction },
-                                { itemName: "System", callback: sampleFunction },
-                            ],
-                        },
-                    ],
-                },
-            ],
+            ]
         ],
     },
     {
@@ -119,9 +104,9 @@ const renderMenuContent = (content: MenuItem[][]) => {
     );
 };
 
-export default function MenuBar() {
+export default function MenuBar({ className }: { className?: string }) {
     return (
-        <ShadMenuBar className="w-full">
+        <ShadMenuBar className={className}>
             {menuBar.map((menu) => (
                 <MenubarMenu key={`menu-${menu.trigger}`}>
                     <MenubarTrigger>{menu.trigger}</MenubarTrigger>
