@@ -15,7 +15,7 @@ export default function FileCard() {
                             <GalleryVerticalEnd className="size-4" />
                         </div>
                         <div className="flex flex-col gap-0.5 leading-none">
-                            <span className="font-semibold">Documentation</span>
+                            <span className="font-semibold">Untitled Diagram</span>
                             <span className="">v1.0.0</span>
                         </div>
                     </a>

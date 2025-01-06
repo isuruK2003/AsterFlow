@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Canvas, TFiller, FabricObject, Circle } from "fabric";
-import { Input } from "@/components/ui/input"; 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface settingsProps {
     canvas: Canvas | null
@@ -106,11 +107,26 @@ export default function Settings({ canvas }: settingsProps) {
     return (
         <>
             {selectedObject && (
-                <>
-                    {width && (<Input value={width} onChange={handleWidthChange} type="number" placeholder="Width" />)}
-                    {height && (<Input value={height} onChange={handleHeightChange} type="number" placeholder="Height" />)}
-                    <Input value={fill ? fill.toString() : "null"} onChange={handleFillChange} type="color" placeholder="Color" />
-                </>
+                <div className="flex flex-col gap-4">
+                    {width &&
+                        <div className="flex flex-row items-center gap-1">
+                            <Label>Width</Label>
+                            <Input value={width} onChange={handleWidthChange} type="number" placeholder="Width" />
+                        </div>
+                    }
+                    {height &&
+                        <div className="flex flex-row items-center gap-1">
+                            <Label>Height</Label>
+                            <Input value={height} onChange={handleHeightChange} type="number" placeholder="Height" />
+                        </div>
+                    }
+                    
+                        <div className="flex flex-row items-center gap-1">
+                            <Label>Color</Label>
+                            <Input value={fill ? fill.toString() : "null"} onChange={handleFillChange} type="color" placeholder="Color" />
+                        </div>
+                    
+                </div>
             )}
             {selectedObject && selectedObject instanceof Circle && radius && (
                     <Input value={radius} onChange={handleRadiusChange} type="number" placeholder="Radius" />
