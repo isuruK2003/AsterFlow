@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Canvas, TFiller, FabricObject, Circle, Rect } from "fabric";
+import { Canvas, TFiller, FabricObject, Circle } from "fabric";
+import { Input } from "@/components/ui/input"; 
 
 interface settingsProps {
     canvas: Canvas | null
@@ -106,25 +107,13 @@ export default function Settings({ canvas }: settingsProps) {
         <>
             {selectedObject && (
                 <>
-                    {width && (<>
-                        <label>Width</label>
-                        <input value={width} onChange={handleWidthChange} />
-                    </>)}
-
-                    {height && (<>
-                        <label>Height</label>
-                        <input value={height} onChange={handleHeightChange} />
-                    </>)}
-
-                    <label>Fill</label>
-                    <input type="color" value={fill ? fill.toString() : "null"} onChange={handleFillChange} />
+                    {width && (<Input value={width} onChange={handleWidthChange} type="number" placeholder="Width" />)}
+                    {height && (<Input value={height} onChange={handleHeightChange} type="number" placeholder="Height" />)}
+                    <Input value={fill ? fill.toString() : "null"} onChange={handleFillChange} type="color" placeholder="Color" />
                 </>
             )}
             {selectedObject && selectedObject instanceof Circle && radius && (
-                <>
-                    <label>Radius</label>
-                    <input value={radius} onChange={handleRadiusChange} />
-                </>
+                    <Input value={radius} onChange={handleRadiusChange} type="number" placeholder="Radius" />
             )}
         </>
     );
