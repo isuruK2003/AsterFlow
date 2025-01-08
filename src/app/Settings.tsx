@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { Canvas, TFiller, FabricObject, Circle } from "fabric";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+
+import { icons } from "lucide-react";
 
 interface settingsProps {
     canvas: Canvas | null
@@ -104,6 +107,12 @@ export default function Settings({ canvas }: settingsProps) {
         canvas.renderAll();
     };
 
+    const handleDelete = () => {
+        if (canvas && selectedObject) {
+            canvas.remove(selectedObject);
+        }
+    }
+
     return (
         <>
             {selectedObject && (
@@ -130,6 +139,13 @@ export default function Settings({ canvas }: settingsProps) {
             )}
             {selectedObject && selectedObject instanceof Circle && radius && (
                     <Input value={radius} onChange={handleRadiusChange} type="number" placeholder="Radius" />
+            )}
+            {selectedObject && (
+                <div>
+                    <Button variant="outline" onClick={handleDelete}><icons.Trash/></Button>
+                    <Button variant="outline"><icons.Copy /></Button>
+                    <Button variant="outline"><icons.Clipboard /></Button>
+                </div>
             )}
         </>
     );

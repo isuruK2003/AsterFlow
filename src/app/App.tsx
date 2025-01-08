@@ -18,6 +18,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AvatarBar } from "./AvatarBar";
 import FileCard from "./FileCard";
 
+import { DiagonalLine } from "@/components/shapes/diagonal-line"
+
+
 export default function App() {
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState<Canvas | null>(null);
@@ -71,13 +74,13 @@ export default function App() {
     {
       title: "Shapes",
       content: [(
-        <div className="flex flex-col gap-2">
-          <Button variant="outline" onClick={addRectangle}>
-            <icons.Square className="mr-2" /> Rectangle
-          </Button>
-          <Button variant="outline" onClick={addCircle}>
-            <icons.Circle className="mr-2" /> Circle
-          </Button>
+        <div className="w-full flex flex-wrap gap-1">
+          <Button variant="outline" onClick={addRectangle}><icons.Square /></Button>
+          <Button variant="outline" onClick={addCircle}><icons.Circle /></Button>
+          <Button variant="outline"><icons.Triangle /></Button>
+          <Button variant="outline"><icons.Cylinder /></Button>
+          <Button variant="outline"><icons.MoveUpRight /></Button>
+          <Button variant="outline"><DiagonalLine /></Button>
         </div>
       )],
     },
