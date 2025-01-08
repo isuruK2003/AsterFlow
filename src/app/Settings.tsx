@@ -114,9 +114,9 @@ export default function Settings({ canvas }: settingsProps) {
     }
 
     return (
-        <>
+        <div className="grid gap-2">
             {selectedObject && (
-                <div className="flex flex-col gap-4">
+                <div className="grid gap-2">
                     {width &&
                         <div className="flex flex-row items-center gap-1">
                             <Label>Width</Label>
@@ -141,12 +141,12 @@ export default function Settings({ canvas }: settingsProps) {
                     <Input value={radius} onChange={handleRadiusChange} type="number" placeholder="Radius" />
             )}
             {selectedObject && (
-                <div>
+                <div className="grid grid-cols-3 gap-2">
                     <Button variant="outline" onClick={handleDelete}><icons.Trash/></Button>
                     <Button variant="outline"><icons.Copy /></Button>
                     <Button variant="outline"><icons.Clipboard /></Button>
                 </div>
             )}
-        </>
+        </div>
     );
 }
