@@ -45,7 +45,7 @@ Before getting started, ensure you have the following installed:
 
 The application will launch in your default web browser at `http://localhost:3000`.
 
-## Usage
+<!--## Usage
 
 ### Creating Your First Graph
 
@@ -65,7 +65,7 @@ We welcome contributions to AsterFlow! Here's how you can help:
 4. Push to your branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-Please make sure to update tests as appropriate and adhere to our coding guidelines.
+Please make sure to update tests as appropriate and adhere to our coding guidelines.-->
 
 ## License
 
