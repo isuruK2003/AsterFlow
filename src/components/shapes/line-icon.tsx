@@ -1,4 +1,4 @@
-export function DiagonalLine({ color = '#fff', style = {} }: { color?: string, style?: React.CSSProperties }) {
+export function LineIcon({ color = '#fff', style = {} }: { color?: string, style?: React.CSSProperties }) {
     return (
         <div style={{ display: "flex", height: "100%", width: "100%", ...style }}>
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ flex: 1 }}>
