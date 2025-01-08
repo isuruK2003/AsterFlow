@@ -107,13 +107,12 @@ export default function App() {
     if (canvas) {
       const line = new Line([50, 50, 200, 200], {
         stroke: "#000",
-        strokeWidth: 2,
+        strokeWidth: 1,
         strokeUniform: true,
       });
       canvas.add(line);
     }
   };
-  
 
   const menuItems = [
     {
