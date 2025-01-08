@@ -53,6 +53,7 @@ export default function App() {
         height: 100,
         stroke: "#000",
         fill: null,
+        strokeUniform: true,
       });
       canvas.add(rect);
     }
@@ -66,6 +67,7 @@ export default function App() {
         radius: 50,
         stroke: "#000",
         fill: null,
+        strokeUniform: true,
       });
       canvas.add(circle);
     }
@@ -80,6 +82,7 @@ export default function App() {
         height: 100,
         stroke: "#000",
         fill: null,
+        strokeUniform: true,
       });
       canvas.add(triangle);
     }
@@ -94,6 +97,7 @@ export default function App() {
         ry: 37.5,
         stroke: "#000",
         fill: null,
+        strokeUniform: true,
       });
       canvas.add(ellipse);
     }
@@ -104,6 +108,7 @@ export default function App() {
       const line = new Line([50, 50, 200, 200], {
         stroke: "#000",
         strokeWidth: 2,
+        strokeUniform: true,
       });
       canvas.add(line);
     }
