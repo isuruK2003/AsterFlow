@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Canvas, Rect, Circle } from "fabric";
+import { Canvas, Rect, Circle, Triangle, Ellipse, Line } from "fabric";
 import Settings from "./Settings";
 
 import { icons } from "lucide-react";
@@ -18,7 +18,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AvatarBar } from "./AvatarBar";
 import FileCard from "./FileCard";
 
-import { DiagonalLine } from "@/components/shapes/diagonal-line"
+import { LineIcon } from "@/components/shapes/line-icon"
+import { EllipseIcon } from "@/components/shapes/ellipse-icon";
 
 
 export default function App() {
@@ -70,17 +71,56 @@ export default function App() {
     }
   };
 
+  const addTriangle = () => {
+    if (canvas) {
+      const triangle = new Triangle({
+        top: 100,
+        left: 100,
+        width: 100,
+        height: 100,
+        stroke: "#000",
+        fill: null,
+      });
+      canvas.add(triangle);
+    }
+  };
+
+  const addEllipse = () => {
+    if (canvas) {
+      const ellipse = new Ellipse({
+        top: 100,
+        left: 100,
+        rx: 50,
+        ry: 37.5,
+        stroke: "#000",
+        fill: null,
+      });
+      canvas.add(ellipse);
+    }
+  };
+  
+  const addLine = () => {
+    if (canvas) {
+      const line = new Line([50, 50, 200, 200], {
+        stroke: "#000",
+        strokeWidth: 2,
+      });
+      canvas.add(line);
+    }
+  };
+  
+
   const menuItems = [
     {
       title: "Shapes",
       content: [(
-        <div className="w-full flex flex-wrap gap-1">
+        <div className="w-full grid grid-cols-4 gap-2">
           <Button variant="outline" onClick={addRectangle}><icons.Square /></Button>
           <Button variant="outline" onClick={addCircle}><icons.Circle /></Button>
-          <Button variant="outline"><icons.Triangle /></Button>
-          <Button variant="outline"><icons.Cylinder /></Button>
+          <Button variant="outline" onClick={addTriangle}><icons.Triangle /></Button>
+          <Button variant="outline" onClick={addEllipse}><EllipseIcon /></Button>
           <Button variant="outline"><icons.MoveUpRight /></Button>
-          <Button variant="outline"><DiagonalLine /></Button>
+          <Button variant="outline" onClick={addLine}><LineIcon /></Button>
         </div>
       )],
     },
@@ -107,29 +147,29 @@ export default function App() {
   return (
     <div className="app bg-zinc-900 h-screen flex flex-col">
       <ThemeProvider>
-      <SidebarProvider>
-        <Sidebar
-          header={sidebarHeader}
-          menuItems={menuItems}
-          footer={sidebarFooter}
-        />
-        <SidebarInset>
+        <SidebarProvider>
+          <Sidebar
+            header={sidebarHeader}
+            menuItems={menuItems}
+            footer={sidebarFooter}
+          />
+          <SidebarInset>
 
-          <header className="flex h-16 items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="h-4" />
+            <header className="flex h-16 items-center gap-2 px-4">
+              <SidebarTrigger className="-ml-1" />
+              <Separator orientation="vertical" className="h-4" />
               <Menubar className="w-full" />
-            <ModeToggle />
-          </header>
-          
-          <div className="w-full h-full p-4">
-            <div className="w-full h-full flex items-center justify-center rounded-lg bg-zinc-950 bg-opacity-10">
-              <canvas className="rounded-lg" ref={canvasRef} />
-            </div>
-          </div>
+              <ModeToggle />
+            </header>
 
-        </SidebarInset>
-      </SidebarProvider>
+            <div className="w-full h-full p-4">
+              <div className="w-full h-full flex items-center justify-center rounded-lg bg-zinc-950 bg-opacity-10">
+                <canvas className="rounded-lg" ref={canvasRef} />
+              </div>
+            </div>
+
+          </SidebarInset>
+        </SidebarProvider>
       </ThemeProvider>
     </div>
   );
