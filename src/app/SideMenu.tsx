@@ -1,5 +1,5 @@
 import {
-  Sidebar as ShadSidebar,
+  Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
@@ -11,7 +11,7 @@ import {
   SidebarGroupContent,
 } from "@/components/ui/sidebar"
 
-export function Sidebar({
+export function SideMenu ({
     header,
     menuItems,
     footer,
@@ -22,9 +22,9 @@ export function Sidebar({
     menuItems: { title: string; content: React.ReactNode[] }[];
     footer: React.ReactNode;
     defaultOpen?: boolean;
-  } & React.ComponentProps<typeof ShadSidebar>) {
+  } & React.ComponentProps<typeof Sidebar>) {
     return (
-      <ShadSidebar collapsible="offcanvas" {...props}>
+      <Sidebar collapsible="offcanvas" {...props}>
         {header && <SidebarHeader>{ header }</SidebarHeader>}
         <SidebarContent>
           {menuItems.map((item, index) => item.content && (
@@ -46,7 +46,7 @@ export function Sidebar({
         </SidebarContent>
         {footer && <SidebarFooter>{footer}</SidebarFooter>}
         <SidebarRail />
-      </ShadSidebar>
+      </Sidebar>
     );
   }
   

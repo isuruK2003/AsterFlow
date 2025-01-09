@@ -116,7 +116,7 @@ const renderMenuContent = (content: MenuItem[][]) => {
     );
 };
 
-export default function Menubar({ className }: { className?: string }) {
+export default function TopMenu({ className }: { className?: string }) {
     return (
         <ShadMenuBar className={className}>
             {menuBar.map((menu) => (

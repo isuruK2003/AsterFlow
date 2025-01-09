@@ -4,8 +4,8 @@ import Settings from "./Settings";
 
 import { icons } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Menubar from "./Menubar";
-import { Sidebar } from "./Sidebar";
+import TopMenu from "./TopMenu";
+import { SideMenu } from "./SideMenu";
 import { ModeToggle } from "@/components/mode-toggle";
 
 import {
@@ -116,7 +116,7 @@ export default function App() {
 
   const menuItems = [
     {
-      title: "Shapes",
+      title: "Objects",
       content: [(
         <div className="w-full grid grid-cols-4 gap-2">
           <Button variant="outline" onClick={addRectangle}><icons.Square /></Button>
@@ -152,7 +152,7 @@ export default function App() {
     <div className="app bg-zinc-900 h-screen flex flex-col">
       <ThemeProvider>
         <SidebarProvider>
-          <Sidebar
+          <SideMenu
             header={sidebarHeader}
             menuItems={menuItems}
             footer={sidebarFooter}
@@ -162,7 +162,7 @@ export default function App() {
             <header className="flex h-16 items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="h-4" />
-              <Menubar className="w-full" />
+              <TopMenu className="w-full" />
               <ModeToggle />
             </header>
 
