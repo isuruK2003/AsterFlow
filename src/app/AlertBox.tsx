@@ -27,8 +27,8 @@ export default function AlertBox({
     triggerButtonName,
     isOpen = false,
     title,
-    cancelButtonName = "Cancel",
-    okButtonName = "Ok",
+    cancelButtonName,
+    okButtonName = "OK",
     cancelButtonCallback,
     okButtonCallback,
 }: AlertBoxProps) {
@@ -54,7 +54,9 @@ export default function AlertBox({
                     {cancelButtonName && (
                         <AlertDialogCancel
                             onClick={() => {
-                                if (cancelButtonCallback) cancelButtonCallback();
+                                if (cancelButtonCallback) {
+                                    cancelButtonCallback()
+                                };
                                 close();
                             }}
                         >{cancelButtonName}
@@ -62,7 +64,9 @@ export default function AlertBox({
                     )}
                     <AlertDialogAction
                         onClick={() => {
-                            if (okButtonCallback) okButtonCallback();
+                            if (okButtonCallback) {
+                                okButtonCallback()
+                            };
                             close();
                         }}
                     >{okButtonName}
