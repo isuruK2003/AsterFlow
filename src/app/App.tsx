@@ -20,7 +20,7 @@ import FileCard from "./FileCard";
 
 import { LineIcon } from "@/components/shapes/line-icon"
 import { EllipseIcon } from "@/components/shapes/ellipse-icon";
-
+import AlertBox from "./AlertBox";
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -102,7 +102,7 @@ export default function App() {
       canvas.add(ellipse);
     }
   };
-  
+
   const addLine = () => {
     if (canvas) {
       const line = new Line([50, 50, 200, 200], {
@@ -165,6 +165,8 @@ export default function App() {
               <TopMenu className="w-full" />
               <ModeToggle />
             </header>
+
+            <AlertBox isOpen={true} title="Construction in progress" message="Hi!, thanks for vising. Just note that this is still under construction." />
 
             <div className="w-full h-full p-4">
               <div className="w-full h-full flex items-center justify-center rounded-lg bg-zinc-950 bg-opacity-10">
