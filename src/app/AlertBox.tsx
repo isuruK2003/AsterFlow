@@ -24,9 +24,9 @@ interface AlertBoxProps {
 
 export default function AlertBox({
     message,
-    triggerButtonName = "Trigger",
+    triggerButtonName,
     isOpen = false,
-    title = "Alert",
+    title,
     cancelButtonName = "Cancel",
     okButtonName = "Ok",
     cancelButtonCallback,
@@ -57,8 +57,7 @@ export default function AlertBox({
                                 if (cancelButtonCallback) cancelButtonCallback();
                                 close();
                             }}
-                        >
-                            {cancelButtonName}
+                        >{cancelButtonName}
                         </AlertDialogCancel>
                     )}
                     <AlertDialogAction
@@ -66,8 +65,7 @@ export default function AlertBox({
                             if (okButtonCallback) okButtonCallback();
                             close();
                         }}
-                    >
-                        {okButtonName}
+                    >{okButtonName}
                     </AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
