@@ -118,30 +118,36 @@ export default function Settings({ canvas }: settingsProps) {
             {selectedObject && (
                 <div className="grid gap-2">
                     {width &&
-                        <div className="flex flex-row items-center gap-1">
-                            <Label>Width</Label>
+                        <div className="grid grid-cols-[50px_auto] gap-1 items-center ">
+                            <Label className=" text-[0.8rem] opacity-85">Width</Label>
                             <Input value={width} onChange={handleWidthChange} type="number" placeholder="Width" />
                         </div>
                     }
                     {height &&
-                        <div className="flex flex-row items-center gap-1">
-                            <Label>Height</Label>
+                        <div className="grid grid-cols-[50px_auto] gap-1 items-center">
+                            <Label className="text-[0.8rem] w-[50px] opacity-85">Height</Label>
                             <Input value={height} onChange={handleHeightChange} type="number" placeholder="Height" />
                         </div>
                     }
                     
-                        <div className="flex flex-row items-center gap-1">
-                            <Label>Color</Label>
-                            <Input value={fill ? fill.toString() : "null"} onChange={handleFillChange} type="color" placeholder="Color" />
+                        <div className="grid grid-cols-[50px_auto] gap-1 items-center">
+                            <Label className="text-[0.8rem] w-[50px] opacity-85">Color</Label>
+                            <div className="flex items-center justify-around border rounded-md">
+                                <span>{fill ? fill.toString() : "null"}</span>
+                                <Input className="appearance-none w-50 rounded-md" value={fill ? fill.toString() : "null"} onChange={handleFillChange} type="color" placeholder="Color" />
+                            </div>
                         </div>
                     
                 </div>
             )}
             {selectedObject && selectedObject instanceof Circle && radius && (
-                    <Input value={radius} onChange={handleRadiusChange} type="number" placeholder="Radius" />
+                        <div className="grid grid-cols-[50px_auto] gap-1 items-center">
+                            <Label className="text-[0.8rem] w-[50px] opacity-85">Radius</Label>
+                            <Input value={radius} onChange={handleRadiusChange} type="number" placeholder="Radius" />
+                        </div>
             )}
             {selectedObject && (
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-2 justify-between">
                     <Button variant="outline" onClick={handleDelete}><icons.Trash/></Button>
                     <Button variant="outline"><icons.Copy /></Button>
                     <Button variant="outline"><icons.Clipboard /></Button>

@@ -32,7 +32,7 @@ export function SideMenu ({
                 <SidebarGroupLabel>
                   {item.title}
                 </SidebarGroupLabel>
-                <SidebarGroupContent>
+                <SidebarGroupContent className="py-1 px-3">
                   <SidebarMenu>
                     {item.content.map((contentItem) => (
                       <SidebarMenuItem key={item.title}>

@@ -29,11 +29,11 @@ export default function App() {
   useEffect(() => {
     if (canvasRef.current) {
       const initCanvas = new Canvas(canvasRef.current, {
-        width: 500,
-        height: 500,
+        width: 900,
+        height: 450,
       });
 
-      initCanvas.backgroundColor = "#fff";
+      initCanvas.backgroundColor = "#111";
       initCanvas.renderAll();
 
       setCanvas(initCanvas);
@@ -166,7 +166,7 @@ export default function App() {
               <ModeToggle />
             </header>
 
-            <AlertBox isOpen={true} title="Construction in progress" message="Hi!, thanks for visiting. Just note that this is still under construction, so most are not implemented yet but will be soon." />
+            {/* <AlertBox isOpen={true} title="Construction in progress" message="Hi!, thanks for visiting. Just note that this is still under construction, so most are not implemented yet but will be soon." /> */}
 
             <div className="w-full h-full p-4">
               <div className="w-full h-full flex items-center justify-center rounded-lg bg-zinc-950 bg-opacity-10">
