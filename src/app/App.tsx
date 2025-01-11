@@ -14,7 +14,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider, useTheme } from "@/components/theme-provider";
 import { AvatarBar } from "./AvatarBar";
 import FileCard from "./FileCard";
 
@@ -24,6 +24,15 @@ import { EllipseIcon } from "@/components/shapes/ellipse-icon";
 export default function App() {
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState<Canvas | null>(null);
+  const { theme } = useTheme();
+
+  const [canvasBg, setCanvasBg] = useState<string>("#fff");
+  const [canvasFg, setCanvasFg] = useState<string>("#000");
+
+  useEffect(() => {
+    setCanvasBg(theme === "dark" ? "#151515": "#fff");
+    setCanvasFg(theme === "dark" ? "#fff": "#000");
+  }, [theme]);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -32,7 +41,7 @@ export default function App() {
         height: 450,
       });
 
-      initCanvas.backgroundColor = "#111";
+      initCanvas.backgroundColor = canvasBg;
       initCanvas.renderAll();
 
       setCanvas(initCanvas);
@@ -50,7 +59,7 @@ export default function App() {
         left: 100,
         width: 100,
         height: 100,
-        stroke: "#000",
+        stroke: canvasFg,
         fill: null,
         strokeUniform: true,
       });
@@ -64,7 +73,7 @@ export default function App() {
         top: 100,
         left: 100,
         radius: 50,
-        stroke: "#000",
+        stroke: canvasFg,
         fill: null,
         strokeUniform: true,
       });
@@ -79,7 +88,7 @@ export default function App() {
         left: 100,
         width: 100,
         height: 100,
-        stroke: "#000",
+        stroke: canvasFg,
         fill: null,
         strokeUniform: true,
       });
@@ -94,7 +103,7 @@ export default function App() {
         left: 100,
         rx: 50,
         ry: 37.5,
-        stroke: "#000",
+        stroke: canvasFg,
         fill: null,
         strokeUniform: true,
       });
@@ -105,7 +114,7 @@ export default function App() {
   const addLine = () => {
     if (canvas) {
       const line = new Line([50, 50, 200, 200], {
-        stroke: "#000",
+        stroke: canvasFg,
         strokeWidth: 1,
         strokeUniform: true,
       });
@@ -168,6 +177,12 @@ export default function App() {
             <div className="w-full h-full p-4">
               <div className="w-full h-full flex items-center justify-center rounded-lg bg-zinc-950 bg-opacity-10">
                 <canvas className="rounded-lg" ref={canvasRef} />
+              </div>
+            </div>
+
+            <div className="py-4 border-t">
+              <div className="opacity-50 text-sm flex flex-row items-center justify-center ">
+                ⚠️ Development in progress so some features are in experimental state and may not be in working condition, but will be soon.
               </div>
             </div>
 
