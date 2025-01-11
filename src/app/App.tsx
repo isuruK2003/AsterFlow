@@ -20,7 +20,7 @@ import FileCard from "./FileCard";
 
 import { LineIcon } from "@/components/shapes/line-icon"
 import { EllipseIcon } from "@/components/shapes/ellipse-icon";
-import AlertBox from "./AlertBox";
+// import AlertBox from "./AlertBox";
 
 export default function App() {
   const canvasRef = useRef(null);
