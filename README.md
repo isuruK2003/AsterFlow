@@ -2,16 +2,16 @@
 
 **AsterFlow** is a web-based graph-making tool designed to help users create, visualize, and share dynamic, interactive diagrams. Built with React, **AsterFlow** allows users to easily map out workflows, processes, and ideas with intuitive drag-and-drop functionality.
 
-(This project is currently at the initial stage of development)
+(This project is currently at the stage of development)
 
 ## Features
 
 - **Drag-and-Drop Interface**: Quickly create and organize nodes and edges with a user-friendly, interactive design
 - **Customizable Styles**: Personalize node colors, shapes, and edge styles to enhance clarity and aesthetics
-- **Real-Time Collaboration**: Work together with others on the same graph in real-time
-- **Export Graphs**: Save and share your diagrams as PNG, SVG, or PDF files
+- **Real-Time Collaboration**: Work together with others on the same graph in real-time (Under Development)
+- **Export Graphs**: Save and share your diagrams as PNG, SVG, or PDF files (Under Development)
 - **Interactive Components**: Add interactions to your nodes for more engaging diagrams
-- **Cloud Sync**: Sync your work to the cloud and access it across devices
+- **Cloud Sync**: Sync your work to the cloud and access it across devices (Under Development)
 
 ### Installation for Development
 
