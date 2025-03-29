@@ -20,6 +20,7 @@ import FileCard from "./FileCard";
 
 import { LineIcon } from "@/components/shapes/line-icon"
 import { EllipseIcon } from "@/components/shapes/ellipse-icon";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
   const canvasRef = useRef(null);
@@ -30,8 +31,8 @@ export default function App() {
   const [canvasFg, setCanvasFg] = useState<string>("#000");
 
   useEffect(() => {
-    setCanvasBg(theme === "dark" ? "#151515": "#fff");
-    setCanvasFg(theme === "dark" ? "#fff": "#000");
+    setCanvasBg(theme === "dark" ? "#151515" : "#fff");
+    setCanvasFg(theme === "dark" ? "#fff" : "#000");
   }, [theme]);
 
   useEffect(() => {
@@ -189,6 +190,7 @@ export default function App() {
           </SidebarInset>
         </SidebarProvider>
       </ThemeProvider>
+      <Analytics />
     </div>
   );
 }
